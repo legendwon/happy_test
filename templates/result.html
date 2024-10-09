@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>보안 MBTI 결과</title>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            margin: 20px auto;
+            animation: fadeIn 1s ease-in-out;
+        }
+        h1 {
+            color: #333;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        .result-image {
+            margin: 30px 0;
+        }
+        .result-image img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        .result-image img:hover {
+            transform: scale(1.05);
+        }
+        .back-btn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1em;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .back-btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+        .back-btn:active {
+            background-color: #003f8a;
+        }
+
+        /* Fade-in 애니메이션 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Footer 스타일 */
+        footer {
+            background-color: #f4f4f4;
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 20px;
+        }
+        footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* 미디어 쿼리: 모바일용 */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+                border-radius: 10px;
+            }
+            h1 {
+                font-size: 1.4em;
+            }
+            p {
+                font-size: 1em;
+            }
+            .result-image img {
+                width: 100px;
+                height: 100px;
+            }
+            .back-btn {
+                font-size: 1em;
+                padding: 10px 25px;
+            }
+        }
+
+        /* 미디어 쿼리: PC용 */
+        @media (min-width: 769px) {
+            .container {
+                padding: 30px;
+                max-width: 600px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            p {
+                font-size: 1.1em;
+            }
+            .result-image img {
+                width: 150px;
+                height: 150px;
+            }
+            .back-btn {
+                font-size: 1.2em;
+                padding: 12px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ result.title }}</h1>
+        <p>{{ result.description }}</p>
+        <p><strong>주요 행동:</strong> {{ result.examples }}</p>
+        <div class="result-image">{{ result.image | safe }}</div>
+        <a href="/"><button class="back-btn">다시 하기</button></a>
+        <p><strong>Sanbo 10th Anniversary</strong></p>
+        <p><strong>11월 1일(금) Coming Soon!</strong></p>
+    </div>
+
+    <!-- 문의 정보가 포함된 footer -->
+    <footer>
+        <p>Developed By 조성원</p>
+        <p>문의: <a href="mailto:won66399@cau.ac.kr">won66399@cau.ac.kr</a></p>
+    </footer>
+</body>
+</html>

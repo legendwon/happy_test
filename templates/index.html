@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>보안 MBTI 테스트</title>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 700px;
+            text-align: center;
+            margin: 20px auto;
+        }
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        .question {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .question p {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        .options {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .options label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 20px;
+            cursor: pointer;
+        }
+        .options label input {
+            display: none;
+        }
+        .options label .circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid #ccc;
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+        }
+        .options label input:checked + .circle {
+            border-color: #4CAF50;
+            background-color: #e0f7e9;
+        }
+        .options label:last-child input:checked + .circle {
+            border-color: #f44336;
+            background-color: #fde0dc;
+        }
+        .options label span {
+            font-size: 1.1em;
+            color: #333;
+        }
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.4em;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            margin-top: 25px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+        .submit-btn:active {
+            background-color: #3d8d41;
+        }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #333;
+        }
+        footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* 모바일에 대한 미디어 쿼리 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            .question p {
+                font-size: 1.1em;
+            }
+            .options label .circle {
+                width: 40px;
+                height: 40px;
+            }
+            .submit-btn {
+                font-size: 1.2em;
+                padding: 12px 30px;
+            }
+        }
+
+        /* 데스크탑에 대한 미디어 쿼리 */
+        @media (min-width: 769px) {
+            .container {
+                padding: 30px;
+            }
+            h1 {
+                font-size: 2.5em;
+            }
+            .question p {
+                font-size: 1.2em;
+            }
+            .submit-btn {
+                font-size: 1.4em;
+                padding: 15px 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>보안 MBTI 테스트</h1>
+        <form action="/submit" method="POST">
+            {% for question in questions %}
+            <div class="question">
+                <p>{{ loop.index }}. {{ question }}</p>
+                <div class="options">
+                    <label>
+                        <input type="radio" name="q{{ loop.index }}" value="yes" required>
+                        <div class="circle"></div>
+                        <span>O</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="q{{ loop.index }}" value="no" required>
+                        <div class="circle"></div>
+                        <span>X</span>
+                    </label>
+                </div>
+            </div>
+            {% endfor %}
+            <button type="submit" class="submit-btn">결과 보기</button>
+        </form>
+    </div>
+
+    <!-- Footer 추가 -->
+    <footer>
+        <p>Developed by 조성원</p>
+        <p>문의: <a href="mailto:won66399@cau.ac.kr">won66399@cau.ac.kr</a></p>
+    </footer>
+</body>
+</html>
