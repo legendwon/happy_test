@@ -3,61 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>보안 MBTI 테스트</title>
+    <title>SBTI(산보MBTI)</title>
     <style>
+        /* 전체 배경 설정 */
         body {
             font-family: 'Noto Sans KR', sans-serif;
-            background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+            background: url('https://i.imgur.com/hfuSuAQ.jpg') no-repeat center center fixed; /* 배경 이미지 */
+            background-size: cover;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             align-items: center;
+            color: #fff;
             min-height: 100vh;
-            overflow-y: auto;
         }
-        .container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
-            width: 100%;
-            max-width: 700px;
+
+        /* 상단 배너 설정 */
+        .banner {
+            width: 80%; /* 원본 비율에 맞추어 조정 */
+            max-width: 1200px;
             text-align: center;
             margin: 20px auto;
         }
+
+        .banner img {
+            width: 100%;
+            height: auto; /* 원본 비율 유지 */
+            border-radius: 10px;
+        }
+
+        /* 콘텐츠 박스 스타일 */
+        .container {
+            padding: 30px;
+            width: 90%;
+            max-width: 700px;
+            text-align: center;
+            margin: 20px auto;
+            box-shadow: none; /* 그림자 제거 */
+            background-color: transparent; /* 완전히 투명하게 */
+        }
+
+        /* 제목 스타일 */
         h1 {
-            color: #333;
+            color: #77d5f4;
             font-size: 2.5em;
             margin-bottom: 20px;
-            border-bottom: 3px solid #4CAF50;
-            padding-bottom: 10px;
         }
+
+        /* 질문과 옵션 스타일 */
         .question {
             margin-bottom: 30px;
-            text-align: center;
         }
+
         .question p {
             font-size: 1.2em;
             margin-bottom: 10px;
-            color: #555;
+            padding: 10px;
+            color: #fff; /* 글자 색상 */
+            background: transparent; /* 배경 투명 */
         }
+
         .options {
             display: flex;
             justify-content: center;
             align-items: center;
         }
+
         .options label {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 0 20px;
+            margin: 0 15px;
             cursor: pointer;
         }
+
         .options label input {
             display: none;
         }
+
         .options label .circle {
             width: 50px;
             height: 50px;
@@ -66,18 +90,23 @@
             transition: all 0.3s ease;
             margin-bottom: 10px;
         }
+
         .options label input:checked + .circle {
             border-color: #4CAF50;
             background-color: #e0f7e9;
         }
+
         .options label:last-child input:checked + .circle {
             border-color: #f44336;
             background-color: #fde0dc;
         }
+
         .options label span {
             font-size: 1.1em;
-            color: #333;
+            color: #fff;
         }
+
+        /* 버튼 스타일 */
         .submit-btn {
             background-color: #4CAF50;
             color: white;
@@ -90,68 +119,65 @@
             margin-top: 25px;
             box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
         }
+
         .submit-btn:hover {
             background-color: #45a049;
         }
-        .submit-btn:active {
-            background-color: #3d8d41;
-        }
+
+        /* 푸터 스타일 */
         footer {
-            margin-top: 20px;
             text-align: center;
-            color: #333;
+            color: #ccc;
+            margin-top: 20px;
+            font-size: 0.9em;
         }
+
         footer a {
-            color: #007BFF;
+            color: #77d5f4;
             text-decoration: none;
         }
+
         footer a:hover {
             text-decoration: underline;
         }
 
-        /* 모바일에 대한 미디어 쿼리 */
+        /* 모바일용 스타일 */
         @media (max-width: 768px) {
             .container {
                 padding: 20px;
             }
+
             h1 {
                 font-size: 1.8em;
             }
+
             .question p {
                 font-size: 1.1em;
             }
+
             .options label .circle {
                 width: 40px;
                 height: 40px;
             }
+
             .submit-btn {
                 font-size: 1.2em;
                 padding: 12px 30px;
             }
         }
-
-        /* 데스크탑에 대한 미디어 쿼리 */
-        @media (min-width: 769px) {
-            .container {
-                padding: 30px;
-            }
-            h1 {
-                font-size: 2.5em;
-            }
-            .question p {
-                font-size: 1.2em;
-            }
-            .submit-btn {
-                font-size: 1.4em;
-                padding: 15px 40px;
-            }
-        }
     </style>
 </head>
 <body>
+    <!-- 상단 배너 -->
+    <div class="banner">
+        <img src="https://i.imgur.com/Quh6WeV.jpg" alt="Banner Image"> <!-- 상단 배너 이미지 -->
+    </div>
+
+    <!-- 메인 컨텐츠 박스 -->
     <div class="container">
         <h1>SBTI(산보MBTI)</h1>
         <form action="/submit" method="POST">
+            <!-- 질문들 반복문 -->
             {% for question in questions %}
             <div class="question">
                 <p>{{ loop.index }}. {{ question }}</p>
